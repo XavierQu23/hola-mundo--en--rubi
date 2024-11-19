@@ -1,6 +1,6 @@
 require 'webrick'
 
-server = WEBrick::HTTPServer.new(Port: 8080)
+server = WEBrick::HTTPServer.new(Port: 5050)
 
 server.mount_proc '/' do |req, res|
   res['Content-Type'] = 'text/html'
