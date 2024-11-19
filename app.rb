@@ -10,3 +10,5 @@ end
 trap('INT') { server.shutdown }
 
 server.start
+set :bind, '0.0.0.0'
+set :port, 5050
