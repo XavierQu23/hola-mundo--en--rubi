@@ -1,7 +1,14 @@
-require 'sinatra'
 require 'webrick'
-get '/' do
-  '<html><body><h1>Hola mundo en Ruby</h1></body></html>'
+
+port = ENV['PORT'] || 5050  # Usa el puerto proporcionado por Railway o un predeterminado
+server = WEBrick::HTTPServer.new(Port: port.to_i)
+
+server.mount_proc '/' do |req, res|
+  res.body = '¡Hola, mundo!'
 end
-set :bind, '0.0.0.0'
-set :port, 5050
+
+trap 'INT' do
+  server.shutdown
+end
+
+server.start
